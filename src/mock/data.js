@@ -45,7 +45,7 @@ export const dummyUsers = [
 ];
 
 // 現在のユーザー（自分）
-const currentUser = dummyUsers.find((user) => user.id === "current");
+export const currentUser = dummyUsers.find((user) => user.id === "current");
 
 // ダミーメッセージデータ
 export const dummyMessages = {
