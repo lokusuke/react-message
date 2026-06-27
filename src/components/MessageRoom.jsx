@@ -1,5 +1,6 @@
 import { useAtomValue } from "jotai";
 import { getMessagesAtom, loginUserAtom } from "../atoms/loginUserAtom";
+import { format } from "date-fns";
 
 export const MessageRoom = () => {
   // 自分のユーザー情報を取得する
@@ -35,7 +36,9 @@ export const MessageRoom = () => {
               >
                 <div className="flex justify-between">
                   <span>{message.sender.name}</span>
-                  <span className="text-gray-500">★ここに時刻</span>
+                  <span className="text-gray-500">
+                    {format(message.timestamp, "HH:mm")}
+                  </span>
                 </div>
                 <span>{message.content}</span>
               </div>

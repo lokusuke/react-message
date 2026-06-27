@@ -4,14 +4,12 @@ import {
   getMessageGroupsAtom,
   setMessageRoomAtom,
 } from "../atoms/loginUserAtom";
+import { format } from "date-fns";
 
 export const MessageGroups = () => {
   const messageGroups = useAtomValue(getMessageGroupsAtom); // mock/data.jsのdummyChatsを取得
   const friendList = useAtomValue(friendListAtom); // mock/data.jsのdummyUsersを取得
   const setActiveMessageRoom = useSetAtom(setMessageRoomAtom);
-
-  // console.log(messageGroups);
-  // console.log(friendList);
 
   const handleClick = (id) => {
     setActiveMessageRoom(id);
@@ -39,7 +37,9 @@ export const MessageGroups = () => {
               <div className="flex flex-col flex-1 min-w-0">
                 <div className="flex justify-between">
                   <span className="font-bold truncate">{message.name}</span>
-                  <span className="text-gray-500">★ここに時刻</span>
+                  <span className="text-gray-500">
+                    {format(message.lastMessage.timestamp, "HH:mm")}
+                  </span>
                 </div>
                 <span className="truncate  w-full">
                   {message.lastMessage.content}
