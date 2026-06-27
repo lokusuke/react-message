@@ -17,7 +17,9 @@ export const MessageRoom = () => {
         return (
           <li key={message.id}>
             <div
-              className={`flex gap-5 p-5 items-center text-left ${isMe ? "flex-row-reverse" : "flex-row"}`}
+              className={`
+                flex gap-5 p-5 items-center text-left 
+                ${isMe ? "flex-row-reverse" : "flex-row"}`}
             >
               <div>
                 <img
@@ -27,7 +29,9 @@ export const MessageRoom = () => {
                 />
               </div>
               <div
-                className={`flex flex-col border rounded-2xl p-2 ${isMe ? "border-pink-200 bg-pink-200" : "border-green-200 bg-green-200"}`}
+                className={`
+                  flex flex-col border rounded-2xl p-2 
+                  ${isMe ? "border-pink-200 bg-pink-200" : "border-green-200 bg-green-200"}`}
               >
                 <div className="flex justify-between">
                   <span>{message.sender.name}</span>
