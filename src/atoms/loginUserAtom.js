@@ -45,10 +45,14 @@ export const setMessageRoomAtom = atom(null, (get, set, id) =>
 export const appendMessageAtom = atom(null, (get, set, roomId, text) => {
   const allMessages = get(messagesAtom); // メッセージデータを取得
   const currentUser = get(loginUserAtom); // 自分のユーザー情報を取得
+
   const targetMessages = allMessages[roomId]; // 指定メッセージグループIDのチャット一覧を取得
+  const newMessageId = String(
+    Number(targetMessages[targetMessages.length - 1].id) + 1,
+  ); // メッセージ部屋の最後のメッセージIDを確認して+1する
 
   const newMessage = {
-    id: String(Number(targetMessages[targetMessages.length - 1].id) + 1), // メッセージ部屋の最後のメッセージIDを確認して+1する
+    id: newMessageId,
     content: text,
     sender: currentUser,
     timestamp: new Date(),
