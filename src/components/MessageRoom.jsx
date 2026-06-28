@@ -61,7 +61,7 @@ export const MessageRoom = () => {
           {isGroup ? "グループチャット" : "個人チャット"}
         </span>
       </header>
-      <ul className="list-none mx-10 my-10 flex-1 p-5">
+      <ul className="list-none mx-10 flex-1 p-5 overflow-y-scroll">
         {activeMessages.map((message) => {
           // （メッセージの送信者が）自分であるかどうか
           const isMe = message.sender.name === loginUser.name;
@@ -99,7 +99,7 @@ export const MessageRoom = () => {
           );
         })}
       </ul>
-      <form className="flex h-10 m-2 items-center" onSubmit={handleSubmit}>
+      <form className="flex h-10 mx-2 items-center" onSubmit={handleSubmit}>
         <input
           type="text"
           className="border border-gray-200 rounded-lg p-1 shadow-md w-full"
