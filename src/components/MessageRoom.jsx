@@ -71,7 +71,7 @@ export const MessageRoom = () => {
           const sendTime = format(message.timestamp, "HH:mm");
 
           return (
-            <li key={`${activeRoomId}-${message.id}`}>
+            <li key={message.id}>
               <div
                 className={`
                 flex gap-5 p-5 items-center text-left 
@@ -89,7 +89,7 @@ export const MessageRoom = () => {
                   flex flex-col border rounded-2xl p-2 
                   ${isMe ? "border-pink-200 bg-pink-200" : "border-green-200 bg-green-200"}`}
                 >
-                  <div className="flex justify-between">
+                  <div className="flex justify-between gap-2">
                     <span>{message.sender.name}</span>
                     <span className="text-gray-500">{sendTime}</span>
                   </div>
