@@ -60,8 +60,8 @@ export const appendMessageAtom = atom(null, (get, set, roomId, text) => {
   };
 
   set(messagesAtom, {
-    ...allMessages,
-    [roomId]: [...targetMessages, newMessage],
+    ...allMessages, // 元々あるメッセージデータをばらして新しい配列を作成
+    [roomId]: [...targetMessages, newMessage], // 該当のキーのメッセージをばらして、新しいメッセージを追加した配列を作成
   });
 });
 
