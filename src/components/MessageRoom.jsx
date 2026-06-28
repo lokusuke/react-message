@@ -52,6 +52,7 @@ export const MessageRoom = () => {
   };
 
   console.log("MessageRoom Rendering!");
+  console.log(activeMessages);
 
   return (
     <div className="flex flex-col h-screen w-full">
@@ -70,7 +71,7 @@ export const MessageRoom = () => {
           const sendTime = format(message.timestamp, "HH:mm");
 
           return (
-            <li key={message.id}>
+            <li key={`${activeRoomId}-${message.id}`}>
               <div
                 className={`
                 flex gap-5 p-5 items-center text-left 
@@ -99,14 +100,17 @@ export const MessageRoom = () => {
           );
         })}
       </ul>
-      <form className="flex h-10 mx-2 items-center" onSubmit={handleSubmit}>
+      <form
+        className="flex gap-2 h-10 mx-2 items-center"
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           className="border border-gray-200 rounded-lg p-1 shadow-md w-full"
           ref={inputRef}
         />
         <div className="rounded-full border-0 hover:bg-sky-500">
-          <button type="submit" className="m-2 p-2">
+          <button type="submit" className="p-2">
             &#x2708;&#xfe0f;
           </button>
         </div>

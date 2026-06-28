@@ -10,7 +10,7 @@ export const MessageGroups = () => {
   const setActiveMessageRoom = useSetAtom(setMessageRoomAtom);
 
   const handleClick = (id) => {
-    setActiveMessageRoom(Number(id));
+    setActiveMessageRoom(String(id));
   };
 
   console.log("MessageGroups Rendering!");

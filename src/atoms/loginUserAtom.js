@@ -6,7 +6,7 @@ import {
   dummyChats,
 } from "../mock/data";
 
-let defaultMessageRoomId = 1; // デフォルトのメッセージ部屋ID
+let defaultMessageRoomId = "1"; // デフォルトのメッセージ部屋ID
 
 //  ---------- ユーザー関連Atom ----------
 // ログインユーザーデータを管理するAtom
@@ -48,7 +48,7 @@ export const appendMessageAtom = atom(null, (get, set, roomId, text) => {
   const targetMessages = allMessages[roomId]; // 指定メッセージグループIDのチャット一覧を取得
 
   const newMessage = {
-    id: targetMessages.length + 1,
+    id: String(Number(targetMessages[targetMessages.length - 1].id) + 1), // メッセージ部屋の最後のメッセージIDを確認して+1する
     content: text,
     sender: currentUser,
     timestamp: new Date(),
