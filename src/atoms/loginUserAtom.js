@@ -41,11 +41,43 @@ export const setMessageRoomAtom = atom(null, (get, set, id) =>
   set(messageRoomAtom, id),
 );
 
-// ログインユーザーが持つチャットデータから、選択しているメッセージ部屋のメッセージを取得する関数Atom（Read-Only）
+// Todo: メッセージ部屋にメッセージを新規追加する関数Atom（Write-Only）
+export const appendMessageAtom = atom(null, (get, set, roomId, text) => {
+  const allMessages = get(messagesAtom); // メッセージデータを取得
+  const currentUser = get(loginUserAtom); // 自分のユーザー情報を取得
+  const targetMessages = allMessages[roomId]; // 指定メッセージグループIDのチャット一覧を取得
+
+  const newMessage = {
+    id: targetMessages.length + 1,
+    content: text,
+    sender: currentUser,
+    timestamp: new Date(),
+    isRead: false,
+  };
+
+  set(messagesAtom, {
+    ...allMessages,
+    [roomId]: [...targetMessages, newMessage],
+  });
+});
+
+// 選択しているメッセージ部屋IDをつかって、メッセージを取得する関数Atom（Read-Only）
 export const getMessagesAtom = atom((get) => {
-  const allMessages = get(messagesAtom); // messagesAtom、つまりdummyMessagesのデータ変化に依存
-  const activeRoomId = get(messageRoomAtom); // messageRoomAtom、つまりクリックしているメッセージ部屋IDの変化に依存
-  return allMessages[activeRoomId];
+  const allMessages = get(messagesAtom); // メッセージデータを取得
+  const activeRoomId = get(messageRoomAtom); // クリックしているメッセージグループIDを取得
+  return allMessages[activeRoomId]; // チャットデータから指定メッセージグループIDのチャット一覧を取得
 }, null);
+
+// 選択しているメッセージ部屋IDをつかって、参加者を取得する関数Atom（Read-Only）
+export const getParticipants = atom((get) => {
+  const activeRoomId = get(messageRoomAtom); // クリックしているメッセージグループIDを取得
+  const messageGroups = get(messageGroupsAtom); // メッセージグループの情報を取得
+
+  const participants = messageGroups.find(
+    (messageGroup) => messageGroup.id === String(activeRoomId),
+  )?.participants;
+
+  return participants;
+});
 
 //  ------------------------------------------
