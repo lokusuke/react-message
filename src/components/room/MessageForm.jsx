@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { appendMessageAtom, messageRoomAtom } from "../atoms/loginUserAtom";
+import { appendMessageAtom, messageRoomAtom } from "../../atoms/loginUserAtom";
 import { useAtomValue, useSetAtom } from "jotai";
 
 export const MessageForm = () => {

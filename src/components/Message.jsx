@@ -1,6 +1,6 @@
-import { MessageRoom } from "./MessageRoom";
-import { MessageGroups } from "./MessageGroups";
-import { MessageTitle } from "./MessageTitle";
+import { MessageRoom } from "./room/MessageRoom";
+import { MessageGroups } from "./sidebar/MessageGroups";
+import { MessageTitle } from "./sidebar/MessageTitle";
 
 export const Message = () => {
   return (
@@ -9,9 +9,7 @@ export const Message = () => {
         <MessageTitle />
         <MessageGroups />
       </aside>
-      <main className="flex flex-1">
-        <MessageRoom />
-      </main>
+      <MessageRoom />
     </>
   );
 };
