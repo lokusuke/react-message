@@ -35,9 +35,16 @@ export const MessageEditModal = ({ editingMessage }) => {
   return (
     <div className="flex fixed inset-0 items-center justify-center bg-black/50 z-999">
       <div className="bg-purple-100 flex flex-col rounded-2xl p-2 items-stretch w-120 m-10">
-        <p className="font-sans m-2 pb-1 text-sm  text-gray-700">
-          &#x1f4dd;メッセージを編集中...
-        </p>
+        <div className="flex p-2">
+          <img
+            className="rounded-full h-10 w-10"
+            src={editingMessage.sender.avatar}
+            alt={editingMessage.sender.name}
+          />
+          <p className="font-sans m-2 pb-1 text-sm  text-gray-700">
+            &#x270f;&#xfe0f;メッセージを編集中...
+          </p>
+        </div>
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-2 items-center"
