@@ -3,6 +3,7 @@ import { editingMessageAtom, getMessagesAtom } from "../../atoms/loginUserAtom";
 import { MessageItem } from "./MessageItem";
 import { MessageRoomHeader } from "./MessageRoomHeader";
 import { MessageForm } from "./MessageForm";
+import { MessageEditModal } from "./MessageEditModal";
 
 export const MessageRoom = () => {
   // クリックされているメッセージ部屋IDからメッセージ一覧を取得する
@@ -22,11 +23,7 @@ export const MessageRoom = () => {
         </ul>
         <MessageForm />
       </div>
-      {
-        editingMessage && (
-          <div>{`${editingMessage.id}を編集します`}</div>
-        ) /* Todo: メッセージ更新関数をつくる */
-      }
+      {editingMessage && <MessageEditModal editingMessage={editingMessage} />}
     </main>
   );
 };

@@ -21,8 +21,6 @@ export const getLoginUserAtom = atom((get) => get(loginUserAtom), null);
 // ログインユーザーが持つフレンドリストを取得する関数Atom（Read-Only）
 export const getFriendListAtom = atom((get) => get(friendListAtom), null);
 
-//  ------------------------------------------
-
 //  ---------- メッセージ関連Atom ----------
 // ログインユーザーが持つチャットグループデータを管理するAtom
 export const messageGroupsAtom = atom(dummyChats);
@@ -79,9 +77,31 @@ export const deleteMessageAtom = atom(null, (get, set, roomId, messageId) => {
 
   set(messagesAtom, {
     ...allMessages, // 元々あるメッセージデータをばらして新しい配列を作成
-    [roomId]: filteredMessages, // 該当のキーのメッセージをばらして、新しいメッセージを追加した配列を作成
+    [roomId]: filteredMessages, // 該当のキーのメッセージをばらして、新しいメッセージを削除した配列を作成
   });
 });
+
+// メッセージ部屋の自分のメッセージを更新する関数Atom（Write-Only）
+export const updateMessageAtom = atom(
+  null,
+  (get, set, roomId, messageId, text) => {
+    const allMessages = get(messagesAtom); // メッセージデータを取得
+    const currentUser = get(loginUserAtom); // 自分のユーザー情報を取得
+
+    const targetMessages = allMessages[roomId]; // 指定メッセージグループIDのチャット一覧を取得
+
+    const updatedMessages = targetMessages.map((message) =>
+      message.id === messageId && message.sender.name === currentUser.name
+        ? { ...message, content: text }
+        : message,
+    );
+
+    set(messagesAtom, {
+      ...allMessages, // 元々あるメッセージデータをばらして新しい配列を作成
+      [roomId]: updatedMessages, // 該当のキーのメッセージをばらして、更新済のメッセージを格納した配列を作成
+    });
+  },
+);
 
 // 選択しているメッセージ部屋IDをつかって、メッセージを取得する関数Atom（Read-Only）
 export const getMessagesAtom = atom((get) => {
@@ -109,5 +129,3 @@ export const editingMessageAtom = atom();
 export const setEditingMessageAtom = atom(null, (get, set, message) => {
   set(editingMessageAtom, message);
 });
-
-//  ------------------------------------------
