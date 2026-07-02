@@ -1,9 +1,14 @@
 import { useAtomValue } from "jotai";
-import { editingMessageAtom, getMessagesAtom } from "../../atoms/loginUserAtom";
+import {
+  deletingMessageAtom,
+  editingMessageAtom,
+  getMessagesAtom,
+} from "../../atoms/loginUserAtom";
 import { MessageItem } from "./MessageItem";
 import { MessageRoomHeader } from "./MessageRoomHeader";
 import { MessageForm } from "./MessageForm";
 import { MessageEditModal } from "./MessageEditModal";
+import { MessageDeleteModal } from "./MessageDeleteModal";
 
 export const MessageRoom = () => {
   // クリックされているメッセージ部屋IDからメッセージ一覧を取得する
@@ -11,6 +16,9 @@ export const MessageRoom = () => {
 
   // 編集中のメッセージ情報を取得
   const editingMessage = useAtomValue(editingMessageAtom);
+
+  // 編集中のメッセージ情報を取得
+  const deletingMessage = useAtomValue(deletingMessageAtom);
 
   return (
     <main className="flex flex-1">
@@ -24,6 +32,9 @@ export const MessageRoom = () => {
         <MessageForm />
       </div>
       {editingMessage && <MessageEditModal editingMessage={editingMessage} />}
+      {deletingMessage && (
+        <MessageDeleteModal deletingMessage={deletingMessage} />
+      )}
     </main>
   );
 };

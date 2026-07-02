@@ -129,3 +129,10 @@ export const editingMessageAtom = atom();
 export const setEditingMessageAtom = atom(null, (get, set, message) => {
   set(editingMessageAtom, message);
 });
+
+export const deletingMessageAtom = atom();
+
+// どのメッセージを削除対象とするかをセットする関数Atom（Write-Only）
+export const setDeletingMessageAtom = atom(null, (get, set, message) => {
+  set(deletingMessageAtom, message);
+});
