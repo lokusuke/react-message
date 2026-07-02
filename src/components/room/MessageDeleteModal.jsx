@@ -35,7 +35,7 @@ export const MessageDeleteModal = ({ deletingMessage }) => {
           </span>
         </div>
         <p className="font-sans m-2 pb-1 text-sm  text-gray-700 text-center">
-          メッセージを削除します。よろしいでしょうか？
+          このメッセージを削除します。よろしいでしょうか？
         </p>
         <div className="flex gap-5 mt-2 justify-end w-full">
           <button
