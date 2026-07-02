@@ -30,7 +30,7 @@ export const MessageDeleteModal = ({ deletingMessage }) => {
             src={deletingMessage.sender.avatar}
             alt={deletingMessage.sender.name}
           />
-          <span className="border border-gray-300 bg-gray-300 p-2 rounded-2xl">
+          <span className="border border-white bg-white p-2 rounded-xl">
             {deletingMessage.content}
           </span>
         </div>
