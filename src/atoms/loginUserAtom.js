@@ -72,7 +72,7 @@ export const deleteMessageAtom = atom(null, (get, set, roomId, messageId) => {
 
   const filteredMessages = targetMessages.filter(
     (message) =>
-      message.id !== messageId && message.sender.name !== currentUser.name,
+      !(message.id === messageId && message.sender.name === currentUser.name),
   );
 
   set(messagesAtom, {

@@ -17,7 +17,7 @@ export const MessageDeleteModal = ({ deletingMessage }) => {
 
   // 削除ボタンを押したときに実行する関数
   const handleDelete = () => {
-    deleteMessage(activeRoomId, deletingMessage);
+    deleteMessage(activeRoomId, deletingMessage.id);
     setDeletingMessage(null);
   };
 
