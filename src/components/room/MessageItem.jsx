@@ -5,8 +5,9 @@ import {
   setEditingMessageAtom,
 } from "../../atoms/loginUserAtom";
 import { format } from "date-fns";
+import { memo } from "react";
 
-export const MessageItem = ({ message }) => {
+export const MessageItem = memo(({ message }) => {
   // 自分のユーザー情報を取得する
   const loginUser = useAtomValue(loginUserAtom);
 
@@ -66,4 +67,4 @@ export const MessageItem = ({ message }) => {
       </div>
     </li>
   );
-};
+});
