@@ -25,9 +25,6 @@ export const messageRoomAtom = atom(defaultMessageRoomId);
 // ログインユーザーが持つチャットデータを管理するAtom
 export const messagesAtom = atom(dummyMessages);
 
-// ログインユーザーが持つチャットグループデータを取得する関数Atom（Read-Only）
-export const getMessageGroupsAtom = atom((get) => get(messageGroupsAtom), null);
-
 // メッセージ部屋IDを書き換える関数Atom（Write-Only）
 export const setMessageRoomAtom = atom(null, (get, set, id) =>
   set(messageRoomAtom, id),

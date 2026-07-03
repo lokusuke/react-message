@@ -1,12 +1,12 @@
 import { useSetAtom, useAtomValue } from "jotai";
 import {
-  getMessageGroupsAtom,
+  messageGroupsAtom,
   setMessageRoomAtom,
 } from "../../atoms/loginUserAtom";
 import { format } from "date-fns";
 
 export const MessageGroups = () => {
-  const messageGroups = useAtomValue(getMessageGroupsAtom); // mock/data.jsのdummyChatsを取得
+  const messageGroups = useAtomValue(messageGroupsAtom); // mock/data.jsのdummyChatsを取得
   const setActiveMessageRoom = useSetAtom(setMessageRoomAtom);
 
   const handleClick = (id) => {
