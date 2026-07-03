@@ -15,12 +15,6 @@ export const loginUserAtom = atom(currentUser);
 // ログインユーザーが持つフレンドリストを管理するAtom
 export const friendListAtom = atom(dummyUsers);
 
-// ログインユーザーを取得する関数Atom（Read-Only）
-export const getLoginUserAtom = atom((get) => get(loginUserAtom), null);
-
-// ログインユーザーが持つフレンドリストを取得する関数Atom（Read-Only）
-export const getFriendListAtom = atom((get) => get(friendListAtom), null);
-
 //  ---------- メッセージ関連Atom ----------
 // ログインユーザーが持つチャットグループデータを管理するAtom
 export const messageGroupsAtom = atom(dummyChats);
