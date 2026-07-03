@@ -27,6 +27,7 @@ export const MessageForm = () => {
 
   // 入力フォームでEnterまたはShift + Enterを押したときの処理関数
   const handleKeyDown = (e) => {
+    // EnterがおされてShiftが押されていなければメッセージを送信
     if (e.key === "Enter" && !e.shiftKey) {
       handleSubmit(e);
       return;
