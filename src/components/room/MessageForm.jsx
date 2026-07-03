@@ -25,12 +25,22 @@ export const MessageForm = () => {
     inputRef.current.value = ""; // 入力フォームをリセット
   };
 
+  // 入力フォームでEnterまたはShift + Enterを押したときの処理関数
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      handleSubmit(e);
+      return;
+    }
+    return;
+  };
+
   return (
     <form className="flex gap-2 h-10 mx-2 items-center" onSubmit={handleSubmit}>
-      <input
+      <textarea
         type="text"
-        className="border border-gray-200 rounded-lg p-1 shadow-md w-full"
+        className="border border-gray-200 rounded-lg p-1 resize-none shadow-md w-full"
         ref={inputRef}
+        onKeyDown={handleKeyDown}
       />
       <div className="rounded-full border-0 hover:bg-sky-500">
         <button type="submit" className="p-2">
