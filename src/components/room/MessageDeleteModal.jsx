@@ -1,13 +1,13 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import {
+  activeRoomIdAtom,
   deleteMessageAtom,
-  messageRoomAtom,
   setDeletingMessageAtom,
 } from "../../atoms/loginUserAtom";
 
 export const MessageDeleteModal = ({ deletingMessage }) => {
   // メッセージ部屋IDを取得する
-  const activeRoomId = useAtomValue(messageRoomAtom);
+  const activeRoomId = useAtomValue(activeRoomIdAtom);
 
   // キャンセル時にdeletingMessageを空にする用
   const setDeletingMessage = useSetAtom(setDeletingMessageAtom);

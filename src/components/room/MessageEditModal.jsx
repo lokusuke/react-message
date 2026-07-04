@@ -1,6 +1,6 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import {
-  messageRoomAtom,
+  activeRoomIdAtom,
   setEditingMessageAtom,
   updateMessageAtom,
 } from "../../atoms/loginUserAtom";
@@ -11,7 +11,7 @@ export const MessageEditModal = ({ editingMessage }) => {
   const textareaRef = useRef(null);
 
   // メッセージ部屋IDを取得する
-  const activeRoomId = useAtomValue(messageRoomAtom);
+  const activeRoomId = useAtomValue(activeRoomIdAtom);
 
   // キャンセル時にeditingMessageを空にする用
   const setEditingMessage = useSetAtom(setEditingMessageAtom);

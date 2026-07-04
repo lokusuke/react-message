@@ -20,14 +20,14 @@ export const friendListAtom = atom(dummyUsers);
 export const messageGroupsAtom = atom(dummyChats);
 
 // メッセージ部屋IDを管理するAtom
-export const messageRoomAtom = atom(defaultMessageRoomId);
+export const activeRoomIdAtom = atom(defaultMessageRoomId);
 
 // ログインユーザーが持つチャットデータを管理するAtom
 export const messagesAtom = atom(dummyMessages);
 
 // メッセージ部屋IDを書き換える関数Atom（Write-Only）
 export const setMessageRoomAtom = atom(null, (get, set, id) =>
-  set(messageRoomAtom, id),
+  set(activeRoomIdAtom, id),
 );
 
 // メッセージ部屋にメッセージを新規追加する関数Atom（Write-Only）
@@ -97,13 +97,13 @@ export const updateMessageAtom = atom(
 // 選択しているメッセージ部屋IDをつかって、メッセージを取得する関数Atom（Read-Only）
 export const getMessagesAtom = atom((get) => {
   const allMessages = get(messagesAtom); // メッセージデータを取得
-  const activeRoomId = get(messageRoomAtom); // クリックしているメッセージグループIDを取得
+  const activeRoomId = get(activeRoomIdAtom); // クリックしているメッセージグループIDを取得
   return allMessages[activeRoomId]; // チャットデータから指定メッセージグループIDのチャット一覧を取得
 }, null);
 
 // 選択しているメッセージ部屋IDをつかって、参加者を取得する関数Atom（Read-Only）
 export const getParticipants = atom((get) => {
-  const activeRoomId = get(messageRoomAtom); // クリックしているメッセージグループIDを取得
+  const activeRoomId = get(activeRoomIdAtom); // クリックしているメッセージグループIDを取得
   const messageGroups = get(messageGroupsAtom); // メッセージグループの情報を取得
 
   const participants = messageGroups.find(

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { appendMessageAtom, messageRoomAtom } from "../../atoms/loginUserAtom";
+import { activeRoomIdAtom, appendMessageAtom } from "../../atoms/loginUserAtom";
 import { useAtomValue, useSetAtom } from "jotai";
 
 export const MessageForm = () => {
@@ -7,7 +7,7 @@ export const MessageForm = () => {
   const inputRef = useRef(null);
 
   // メッセージ部屋IDを取得する
-  const activeRoomId = useAtomValue(messageRoomAtom);
+  const activeRoomId = useAtomValue(activeRoomIdAtom);
 
   // メッセージ追加関数Atomを利用する
   const appendMessage = useSetAtom(appendMessageAtom);
