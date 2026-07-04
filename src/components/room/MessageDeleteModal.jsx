@@ -3,7 +3,7 @@ import {
   activeRoomIdAtom,
   deleteMessageAtom,
   setDeletingMessageAtom,
-} from "../../atoms/loginUserAtom";
+} from "../../atoms/messagesAtom";
 
 export const MessageDeleteModal = ({ deletingMessage }) => {
   // メッセージ部屋IDを取得する

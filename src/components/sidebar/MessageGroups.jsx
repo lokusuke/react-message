@@ -2,7 +2,7 @@ import { useSetAtom, useAtomValue } from "jotai";
 import {
   messageGroupsAtom,
   setMessageRoomAtom,
-} from "../../atoms/loginUserAtom";
+} from "../../atoms/messagesAtom";
 import { format } from "date-fns";
 
 export const MessageGroups = () => {

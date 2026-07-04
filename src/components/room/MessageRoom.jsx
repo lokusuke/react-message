@@ -3,7 +3,7 @@ import {
   deletingMessageAtom,
   editingMessageAtom,
   getMessagesAtom,
-} from "../../atoms/loginUserAtom";
+} from "../../atoms/messagesAtom";
 import { MessageItem } from "./MessageItem";
 import { MessageRoomHeader } from "./MessageRoomHeader";
 import { MessageForm } from "./MessageForm";

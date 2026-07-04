@@ -1,9 +1,9 @@
 import { useAtomValue, useSetAtom } from "jotai";
+import { loginUserAtom } from "../../atoms/loginUserAtom";
 import {
-  loginUserAtom,
   setDeletingMessageAtom,
   setEditingMessageAtom,
-} from "../../atoms/loginUserAtom";
+} from "../../atoms/messagesAtom";
 import { format } from "date-fns";
 import { memo } from "react";
 

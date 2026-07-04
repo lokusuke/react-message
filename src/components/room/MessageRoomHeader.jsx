@@ -1,5 +1,5 @@
 import { useAtomValue } from "jotai";
-import { getParticipants } from "../../atoms/loginUserAtom";
+import { getParticipants } from "../../atoms/messagesAtom";
 
 export const MessageRoomHeader = () => {
   // メッセージ部屋の参加者情報を取得する

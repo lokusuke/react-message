@@ -3,7 +3,7 @@ import {
   activeRoomIdAtom,
   setEditingMessageAtom,
   updateMessageAtom,
-} from "../../atoms/loginUserAtom";
+} from "../../atoms/messagesAtom";
 import { useRef } from "react";
 
 export const MessageEditModal = ({ editingMessage }) => {
