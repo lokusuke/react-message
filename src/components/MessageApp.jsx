@@ -1,13 +1,13 @@
 import { MessageRoom } from "./room/MessageRoom";
-import { MessageGroups } from "./sidebar/MessageGroups";
+import { MessageRoomList } from "./sidebar/MessageRoomList";
 import { MessageTitle } from "./sidebar/MessageTitle";
 
-export const Message = () => {
+export const MessageApp = () => {
   return (
     <>
       <aside className="w-80 flex flex-col border-r-2 border-purple-100 ">
         <MessageTitle />
-        <MessageGroups />
+        <MessageRoomList />
       </aside>
       <MessageRoom />
     </>

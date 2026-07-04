@@ -1,10 +1,10 @@
 import "./App.css";
-import { Message } from "./components/Message";
+import { MessageApp } from "./components/MessageApp";
 
 function App() {
   return (
     <div className="h-screen w-full flex">
-      <Message />
+      <MessageApp />
     </div>
   );
 }

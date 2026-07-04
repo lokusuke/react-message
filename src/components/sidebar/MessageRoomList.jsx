@@ -5,7 +5,7 @@ import {
 } from "../../atoms/messagesAtom";
 import { format } from "date-fns";
 
-export const MessageGroups = () => {
+export const MessageRoomList = () => {
   const messageGroups = useAtomValue(messageGroupsAtom); // mock/data.jsのdummyChatsを取得
   const setActiveMessageRoom = useSetAtom(setMessageRoomAtom);
 
