@@ -3,7 +3,8 @@ import {
   messageGroupsAtom,
   setMessageRoomAtom,
 } from "../../atoms/messagesAtom";
-import { format } from "date-fns";
+import { Avatar } from "../utils/Avatar";
+import { formatSendTime } from "../common/formatSendTime";
 
 export const MessageRoomList = () => {
   const messageGroups = useAtomValue(messageGroupsAtom); // mock/data.jsのdummyChatsを取得
@@ -20,7 +21,7 @@ export const MessageRoomList = () => {
       <ul className="list-none">
         {messageGroups.map((messageGroup) => {
           // メッセージ送信時間
-          const sendTime = format(messageGroup.lastMessage.timestamp, "HH:mm");
+          const sendTime = formatSendTime(messageGroup.lastMessage.timestamp);
 
           return (
             <li key={messageGroup.id}>
@@ -30,10 +31,10 @@ export const MessageRoomList = () => {
               >
                 <div className="shrink-0">
                   {messageGroup.participants.map((participant) => (
-                    <img
-                      className="rounded-full h-15 w-15"
+                    <Avatar
                       src={participant.avatar}
                       alt={`アイコン画像${participant}`}
+                      size="md"
                       key={Number(participant.id)}
                     />
                   ))}

@@ -4,8 +4,9 @@ import {
   setDeletingMessageAtom,
   setEditingMessageAtom,
 } from "../../atoms/messagesAtom";
-import { format } from "date-fns";
 import { memo } from "react";
+import { Avatar } from "../utils/Avatar";
+import { formatSendTime } from "../common/formatSendTime";
 
 export const MessageItem = memo(({ message }) => {
   // 自分のユーザー情報を取得する
@@ -15,7 +16,7 @@ export const MessageItem = memo(({ message }) => {
   const isMe = message.sender.name === loginUser.name;
 
   // メッセージ送信時間
-  const sendTime = format(message.timestamp, "HH:mm");
+  const sendTime = formatSendTime(message.timestamp);
 
   // 編集するメッセージ情報を保管する
   const setEditingMessage = useSetAtom(setEditingMessageAtom);
@@ -30,13 +31,11 @@ export const MessageItem = memo(({ message }) => {
                 flex gap-5 p-5 items-center text-left 
                 ${isMe ? "flex-row-reverse" : "flex-row"}`}
       >
-        <div>
-          <img
-            src={message.sender.avatar}
-            alt={`アイコン画像 ${message.sender}`}
-            className="rounded-full h-15 w-15"
-          />
-        </div>
+        <Avatar
+          src={message.sender.avatar}
+          alt={`アイコン画像 ${message.sender}`}
+          size="md"
+        />
         <div
           className={`
                   flex flex-col border rounded-2xl p-2 
