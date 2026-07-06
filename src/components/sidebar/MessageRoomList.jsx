@@ -34,7 +34,6 @@ export const MessageRoomList = () => {
                     <Avatar
                       src={participant.avatar}
                       alt={`アイコン画像${participant}`}
-                      size="md"
                       key={Number(participant.id)}
                     />
                   ))}

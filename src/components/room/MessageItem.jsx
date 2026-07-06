@@ -34,7 +34,6 @@ export const MessageItem = memo(({ message }) => {
         <Avatar
           src={message.sender.avatar}
           alt={`アイコン画像 ${message.sender}`}
-          size="md"
         />
         <div
           className={`

@@ -24,19 +24,12 @@ export const MessageDeleteModal = ({ deletingMessage }) => {
 
   return (
     <ModalBase>
-      <div className="flex gap-2 p-2 items-center justify-center">
-        <img
-          className="rounded-full h-10 w-10"
-          src={deletingMessage.sender.avatar}
-          alt={deletingMessage.sender.name}
-        />
-        <span className="border border-white bg-white p-2 rounded-xl">
-          {deletingMessage.content}
-        </span>
-      </div>
-      <p className="font-sans m-2 pb-1 text-sm  text-gray-700 text-center">
-        このメッセージを削除します。よろしいでしょうか？
+      <p className="font-sans m-2 pb-1 text-sm  text-gray-700">
+        このメッセージを削除します。よろしいですか？
       </p>
+      <span className="border border-white bg-white p-2 rounded-xl">
+        {deletingMessage.content}
+      </span>
       <div className="flex gap-5 mt-2 justify-end w-full">
         <button
           type="button"

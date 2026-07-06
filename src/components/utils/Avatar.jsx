@@ -1,4 +1,4 @@
-export const Avatar = ({ src, alt, size }) => {
+export const Avatar = ({ src, alt, size = "md" }) => {
   const avatarSize = {
     sm: "h-10 w-10",
     md: "h-15 w-15",
