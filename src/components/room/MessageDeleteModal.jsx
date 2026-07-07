@@ -1,0 +1,42 @@
+import { useAtomValue, useSetAtom } from "jotai";
+import {
+  activeRoomIdAtom,
+  deleteMessageAtom,
+  setDeletingMessageAtom,
+} from "../../atoms/messagesAtom";
+import { ModalBase } from "../utils/ModalBase";
+import { Button } from "../utils/Button";
+
+export const MessageDeleteModal = ({ deletingMessage }) => {
+  // メッセージ部屋IDを取得する
+  const activeRoomId = useAtomValue(activeRoomIdAtom);
+
+  // キャンセル時にdeletingMessageを空にする用
+  const setDeletingMessage = useSetAtom(setDeletingMessageAtom);
+
+  // 送信時にメッセージを更新する関数
+  const deleteMessage = useSetAtom(deleteMessageAtom);
+
+  // 削除ボタンを押したときに実行する関数
+  const handleDelete = () => {
+    deleteMessage(activeRoomId, deletingMessage.id);
+    setDeletingMessage(null);
+  };
+
+  return (
+    <ModalBase>
+      <p className="font-sans m-2 pb-1 text-sm  text-gray-700">
+        このメッセージを削除します。よろしいですか？
+      </p>
+      <span className="border border-white bg-white p-2 rounded-xl">
+        {deletingMessage.content}
+      </span>
+      <div className="flex gap-5 mt-2 justify-end w-full">
+        <Button onClick={handleDelete} variant="danger">
+          削除
+        </Button>
+        <Button onClick={() => setDeletingMessage(null)}>キャンセル</Button>
+      </div>
+    </ModalBase>
+  );
+};
