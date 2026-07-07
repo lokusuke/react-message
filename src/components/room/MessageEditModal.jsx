@@ -6,6 +6,7 @@ import {
 } from "../../atoms/messagesAtom";
 import { useRef } from "react";
 import { ModalBase } from "../utils/ModalBase";
+import { Button } from "../utils/Button";
 
 export const MessageEditModal = ({ editingMessage }) => {
   // textareaの入力値の取得用
@@ -51,19 +52,12 @@ export const MessageEditModal = ({ editingMessage }) => {
           defaultValue={editingMessage.content}
         />
         <div className="flex gap-5 mt-2 justify-end w-full">
-          <button
-            type="submit"
-            className="border-0 border-sky-300 bg-sky-300 hover:bg-sky-400 p-2 rounded-2xl shadow-md text-white w-fit"
-          >
+          <Button type="submit" variant="primary">
             送信
-          </button>
-          <button
-            type="button"
-            onClick={() => setEditingMessage(null)}
-            className="border-0 border-gray-300 bg-gray-300 hover:bg-gray-400 p-2 rounded-2xl shadow-md text-white w-fit"
-          >
+          </Button>
+          <Button variant="default" onClick={() => setEditingMessage(null)}>
             キャンセル
-          </button>
+          </Button>
         </div>
       </form>
     </ModalBase>

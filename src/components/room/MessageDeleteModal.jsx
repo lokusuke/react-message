@@ -5,6 +5,7 @@ import {
   setDeletingMessageAtom,
 } from "../../atoms/messagesAtom";
 import { ModalBase } from "../utils/ModalBase";
+import { Button } from "../utils/Button";
 
 export const MessageDeleteModal = ({ deletingMessage }) => {
   // メッセージ部屋IDを取得する
@@ -31,20 +32,10 @@ export const MessageDeleteModal = ({ deletingMessage }) => {
         {deletingMessage.content}
       </span>
       <div className="flex gap-5 mt-2 justify-end w-full">
-        <button
-          type="button"
-          onClick={handleDelete}
-          className="border-0 border-red-300 bg-red-300 hover:bg-red-400 p-2 rounded-2xl shadow-md text-white w-fit"
-        >
+        <Button onClick={handleDelete} variant="danger">
           削除
-        </button>
-        <button
-          type="button"
-          onClick={() => setDeletingMessage(null)}
-          className="border-0 border-gray-300 bg-gray-300 hover:bg-gray-400 p-2 rounded-2xl shadow-md text-white w-fit"
-        >
-          キャンセル
-        </button>
+        </Button>
+        <Button onClick={() => setDeletingMessage(null)}>キャンセル</Button>
       </div>
     </ModalBase>
   );
